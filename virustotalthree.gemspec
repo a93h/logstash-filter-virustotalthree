@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   s.name          = 'logstash-filter-virustotalthree'
-  s.version       = '0.1.0'
+  s.version       = '0.1.1'
   s.licenses      = ['Apache-2.0']
-  s.summary       = 'This filter queries the Virustotal API'
+  s.summary       = 'This filter queries the Virustotal API v3'
   s.description   = 'This gem is a logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/logstash-plugin install gemname. This gem is not a stand-alone program'
-  s.homepage      = 'https://www.coolacid.net/'
+  s.homepage      = 'https://github.com/a93h/logstash-filter-virustotalthree'
   s.authors       = ["gh-flo-vall","CoolAcid","a93h"]
   s.email         = ''
   s.require_paths = ['lib']
