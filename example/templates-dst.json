@@ -1,0 +1,30 @@
+{
+  "size": 1,
+  "sort": [
+    {
+      "@timestamp": "desc"
+    }
+  ],
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "query_string": {
+            "query": "DST:%{[DST]} AND _exists_:virustotalthreedst"
+          }
+        },
+        {
+          "range": {
+            "virustotalthreedst.date_created": {
+              "gte": "now-3M",
+              "lte": "now"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "_source": [
+    "virustotalthreedst"
+  ]
+}
