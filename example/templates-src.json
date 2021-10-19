@@ -1,30 +1,30 @@
 {
-    "size": 1,
-    "sort": [
-      {
-        "@timestamp": "desc"
-      }
-    ],
-    "query": {
-      "bool": {
-        "filter": [
-          {
-            "query_string": {
-              "query": "SRC:%{[SRC]} AND _exists_:virustotalthreesrc"
-            }
-          },
-          {
-            "range": {
-              "virustotalthreesrc.date_created": {
-                "gte": "now-3M",
-                "lte": "now"
-              }
+  "size": 1,
+  "sort": [
+    {
+      "@timestamp": "desc"
+    }
+  ],
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "query_string": {
+            "query": "SRC:%{[SRC]} AND _exists_:virustotalthreesrc"
+          }
+        },
+        {
+          "range": {
+            "virustotalthreesrc.date_created": {
+              "gte": "now-3M",
+              "lte": "now"
             }
           }
-        ]
-      }
-    },
-    "_source": [
-      "virustotalthreesrc"
-    ]
-  }
+        }
+      ]
+    }
+  },
+  "_source": [
+    "virustotalthreesrc"
+  ]
+}
