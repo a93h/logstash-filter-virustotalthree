@@ -19,8 +19,8 @@ class LogStash::Filters::Virustotalthree < LogStash::Filters::Base
   #
   config_name "virustotalthree"
 
-  # For filed containing the item to lookup. This can point to a field ontaining a File Hash or URL
-  config :api_key, :validate => :string, :required => true
+  # Your VirusTotal API Key
+  config :apikey, :validate => :string, :required => true
 
   # For filed containing the item to lookup. This can point to a field ontaining a File Hash or URL
   config :field, :validate => :string, :required => true
@@ -39,9 +39,9 @@ class LogStash::Filters::Virustotalthree < LogStash::Filters::Base
   public
   def filter(event)
     begin
+      @logger.warn("LSFVTL: ", :apikey => @apikey)
       # when given nothing, it tries to load your API key from ENV["VIRUSTOTAL_API_KEY"]
-      api = VirusTotal::API.new(key: event.get(@api_key))
-      event.get(@field);
+      api = VirusTotal::API.new(key: @apikey)
       if @lookup_type == "hash"
         vt_report = api.file.get(event.get(@field))
       elsif @lookup_type == "domain"
